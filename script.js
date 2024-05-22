@@ -15,9 +15,10 @@ function divide(a, b) {
 }
 
 
-const firstNumber = '';
-const secondNumber = '';
-const operator = '';
+let firstNumber = '';
+let secondNumber = '';
+let operator = '';
+
 
 function operate(a, b, operator) {
     if (operator === '+') {
@@ -31,5 +32,54 @@ function operate(a, b, operator) {
     }
 }
 
+const btnNumbers = document.querySelectorAll(".number");
+const btnSymbol = document.querySelectorAll(".symbol");
+let dsply = document.querySelector(".display");
+const equal = document.querySelector(".equal");
 
-const calc = document.querySelector('.calc');
+dsply.textContent = '';
+
+let firstSet = true;
+
+btnNumbers.forEach(function(element) {
+    element.addEventListener("click", () => {
+    const text = element.innerHTML;
+    const number = Number(text);
+    if (typeof number == "number" && firstSet == true) {
+        dsply.textContent += text;
+        return firstNumber += text;
+    } else if (typeof number == "number" && firstSet == false) {
+        dsply.textContent += text;
+        return secondNumber += text;
+    }
+    });
+});    // trying to figure out how to make includes work to filter out symbols from numbers from onclick
+
+btnSymbol.forEach(function(element) {
+    element.addEventListener("click", () => {
+        const text = element.innerHTML;
+        if (text == "+") {
+            dsply.textContent += text;
+            operator += text;
+            firstSet = false;
+        }  else if (text == + "-") {
+            dsply.textContent += text;
+            operator += text;
+            firstSet = false;
+        }  else if (text == "*") {
+            dsply.textContent += text;
+            operator += text;
+            firstSet = false;
+        }  else if (text == "/") {
+            dsply.textContent += text;
+            operator += text;
+            firstSet = false;
+        }
+    });
+});
+
+equal.forEach(function(element) {
+    element.addEventListener("click", () => {
+        // put code for equal button
+    });
+});
