@@ -53,7 +53,7 @@ btnNumbers.forEach(function(element) {
         return secondNumber += text;
     }
     });
-});    // trying to figure out how to make includes work to filter out symbols from numbers from onclick
+}); 
 
 btnSymbol.forEach(function(element) {
     element.addEventListener("click", () => {
@@ -78,8 +78,31 @@ btnSymbol.forEach(function(element) {
     });
 });
 
-equal.forEach(function(element) {
-    element.addEventListener("click", () => {
-        // put code for equal button
-    });
+
+equal.addEventListener("click", () => {
+    const text = equal.innerHTML;
+    if (text == "=") {
+        dsply.textContent = '';
+        if (operator == "+") {
+            dsply.textContent += add(Number(firstNumber), Number(secondNumber));
+            operator = '';
+            secondNumber = '';
+            return firstNumber = Number(dsply.textContent);
+        } else if (operator == "-") {
+            dsply.textContent += subtract(Number(firstNumber), Number(secondNumber));
+            operator = '';
+            secondNumber = '';
+            return firstNumber = Number(dsply.textContent);
+    }  else if (operator == "*") {
+        dsply.textContent += multiply(Number(firstNumber), Number(secondNumber));
+        operator = '';
+        secondNumber = '';
+        return firstNumber = Number(dsply.textContent);
+    } else if (operator == "/") {
+        dsply.textContent += divide(Number(firstNumber), Number(secondNumber));
+        operator = '';
+        secondNumber = '';
+        return firstNumber = Number(dsply.textContent);
+}
+    }
 });
